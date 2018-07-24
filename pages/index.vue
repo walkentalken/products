@@ -1,15 +1,26 @@
 <template>
   <div class="container">
     <div class="row">
-      <h1 class="title">
+      <h1 class="title col-lg">
         Products for sale!
       </h1>
-      <div class="search-wrapper">
-        <label>Search title:</label>
-        <input type="text" v-model="search" placeholder="Search title.."/>
-      </div>
     </div>
-    <div class="row" v-if="productList && productList.length">
+    <div class="row">
+      <form>
+        <div class="form-group col-sm">
+          <label for="search">Search title:</label>
+          <input type="text" class="form-control" id="search" v-model="search" placeholder="Search title.."/>
+        </div>
+
+        <div class="form-group col-sm">
+          <label for="search-description">Search Description:</label>
+          <input type="text" class="form-control" id="search-description" v-model="searchDescription" placeholder="Search Description.."/>
+        </div>
+
+
+      </form>
+    </div>
+    <div class="row" v-if="filteredList && filteredList.length">
       <div v-for="(product, index) in filteredList" :key="index" class="col-sm">
         <single-product :product="product" />
       </div>
@@ -54,9 +65,6 @@ export default {
 </script>
 
 <style>
-.container ul,
-.container li{
-  list-style: none;
-}
+
 </style>
 
