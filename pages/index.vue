@@ -29,10 +29,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SingleProduct from '~/components/SingleProduct.vue'
-import product from '~/static/product'
-
+import store from '~/store'
 
 export default {
   components: {
@@ -40,22 +38,17 @@ export default {
   },
   data() {
     return {
-      productList: [],
-      errors: [],
       search: '',
       searchDescription: ''
     }
   },
-  async created() {
-     try {
-        const response = await axios.get(`https://next.json-generator.com/api/json/get/EJplRmgNS`)
-        this.productList = response.data
-     } catch (e) {
-        this.errors.push(e)
-        this.productList = product.productList
-     }
-  },
+  async fetch ({store, params}) {
+    await store.dispatch('fetchProductList')
+  },     
   computed: {
+    productList () {
+      return this.$store.state.productList
+    },
     filteredList() {
       return this.productList.filter(post => {
         return post.title.toLowerCase().includes(this.search.toLowerCase())
