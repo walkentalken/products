@@ -2,7 +2,7 @@ export default {
   productList: [
     {
       "_id": "5b573edca23ee84ce6166dce",
-      "title": "sunt proident et",
+      "title": "sunt proident et COMING FROM STATIC",
       "index": 0,
       "soldOut": false,
       "price": "$173.01",
