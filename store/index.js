@@ -12,7 +12,7 @@ export const actions = {
       const { data } = await axios.get('https://next.json-generator.com/api/json/get/EJplRmgNS')
     	commit('setProductList', data)
    	} catch (e) {
-      const { staticData } = product.productList
+      const staticData = product.productList
       commit('setProductList', staticData)
    	}
 
