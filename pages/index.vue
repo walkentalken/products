@@ -42,7 +42,8 @@ export default {
     return {
       productList: [],
       errors: [],
-      search: ''
+      search: '',
+      searchDescription: ''
     }
   },
   async created() {
@@ -58,6 +59,7 @@ export default {
     filteredList() {
       return this.productList.filter(post => {
         return post.title.toLowerCase().includes(this.search.toLowerCase())
+        && post.about.toLowerCase().includes(this.searchDescription.toLowerCase())
       })
     }
   }
