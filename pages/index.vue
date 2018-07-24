@@ -1,17 +1,19 @@
 <template>
   <div class="container">
-    <h1 class="title">
-      Products for sale!
-    </h1>
-    <div class="search-wrapper">
-      <label>Search title:</label>
-      <input type="text" v-model="search" placeholder="Search title.."/>
+    <div class="row">
+      <h1 class="title">
+        Products for sale!
+      </h1>
+      <div class="search-wrapper">
+        <label>Search title:</label>
+        <input type="text" v-model="search" placeholder="Search title.."/>
+      </div>
     </div>
-    <ul v-if="productList && productList.length">
-      <li v-for="(product, index) in filteredList" :key="index">
+    <div class="row" v-if="productList && productList.length">
+      <div v-for="(product, index) in filteredList" :key="index" class="col-sm">
         <single-product :product="product" />
-      </li>
-    </ul>
+      </div>
+  </div>
   </div>
 </template>
 
